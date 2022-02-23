@@ -5,6 +5,9 @@ var pjson = require('./package.json');
 var app = express();
 var hostname = os.hostname();
 
+const PORT = 3000;
+const HOST = '0.0.0.0';
+
 app.get('/', function(req, res){
    res.send({
            "status": "OK",
@@ -22,4 +25,6 @@ app.get('/shutdown', function(req, res){
     res.send({"status": "OK", "message": "Shutting down app", "timestamp": new Date().toISOString()});
 });
 
-app.listen(3000);
+app.listen(PORT, HOST);
+
+console.log(`Running on http://${HOST}:${PORT}`);
