@@ -1,17 +1,19 @@
 {
-  "name": "uni-demo-app",
+  "name": "aws-nodejs-docker-demo",
   "version": "1.0.0",
-  "description": "Small NodeJs app for demo of devops pipelines",
-  "main": "index.js",
+  "description": "This project has been generated using the `aws-nodejs-docker` template from the [Serverless framework](https://www.serverless.com/).",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "Ankur Pandey",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "serverless-offline": "^8.5.0",
+    "serverless-plugin-log-retention": "^2.0.0"
   }
 }

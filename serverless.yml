@@ -1,0 +1,66 @@
+
+service: uniDevOpsDemoApp
+org: mumbaiuniversity
+
+
+plugins:
+  - serverless-plugin-log-retention
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 128 # optional, in MB, default is 1024
+  timeout: 10
+  architecture: arm64
+  region: us-west-2
+  lambdaHashingVersion: 20201221
+  vpc:
+    securityGroupIds:
+     - sg-04730785ad8f46154
+
+    subnetIds:
+      # - subnet-0928a59869fc38269
+      # - subnet-085f45c0ce96a50fc
+      # - subnet-03ca768f5e48be1d6
+      - subnet-0c340f01c927a3d12
+      - subnet-058dfbd58784e5da2
+      - subnet-0492d0912a9018190
+
+  logRetentionInDays: 3
+
+  environment:
+    APP_ENV: "dev"
+
+  ecr:
+    # In this section you can define images that will be built locally and uploaded to ECR
+    images:
+      appimage:
+        path: ./
+
+
+functions:
+  home:
+    image:
+      name: appimage
+      command:
+        - app.home
+
+    events:
+      - http: # this is an API Gateway HTTP event trigger
+          path: /home
+          method: GET
+          cors: true
+
+
+  createUser:
+    image:
+      name: appimage
+      command:
+        - app.createUser
+
+    events:
+      - http:
+          path: /user
+          method: POST
+          cors: true

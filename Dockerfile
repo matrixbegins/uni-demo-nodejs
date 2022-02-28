@@ -1,13 +1,11 @@
-FROM node:16.14.0-stretch-slim
-
-WORKDIR /usr/src/app
+FROM public.ecr.aws/lambda/nodejs:14-arm64
 
 COPY package*.json ./
-COPY index.js ./
+COPY *.js ./
 
 RUN npm install
 
 EXPOSE 3000
 
 # start the app
-CMD [ "node", "index.js" ]
+CMD [ "lambda.handler" ]
