@@ -5,7 +5,8 @@ org: mumbaiuniversity
 
 plugins:
   - serverless-plugin-log-retention
-frameworkVersion: '2'
+
+frameworkVersion: '3'
 
 provider:
   name: aws
